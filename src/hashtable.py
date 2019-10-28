@@ -52,11 +52,20 @@ class HashTable:
         Fill this in.
         '''
         # call self._hash_mod(key) and get the index of the insertion
+        index = self._hash_mod(key)
         # check to see if the value at the index is not None
+        if self.storage[index] is not None:
             # create a new LinkedPair class with the key and value
+            new_pair = LinkedPair(key, value)
             # loop through to the end of the linked list and insert the new linked pair
+            current_pair = self.storage[index]
+
+            while current_pair.next is not None:
+                current_pair = current_pair.next
+
+            current_pair.next = new_pair
         # otherwise, make a LinkedPair with the key, value and set it at that index
-        pass
+        self.storage[index] = LinkedPair(key, value)
 
     def remove(self, key):
         '''
