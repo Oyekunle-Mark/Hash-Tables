@@ -163,13 +163,16 @@ class HashTable:
         self.capacity *= 2
         # let old_storage hold self.storage
         old_storage = self.storage
-        # point self.storage to a list capacity self.capacity
+        # point self.storage to a list of capacity self.capacity
         self.storage = [None] * self.capacity
+
         # loop through old_storage and rehash every key/value pair
         for item in old_storage:
             # if item is not None
             if item is not None:
+                # set the head of the linked list to current_pair
                 current_pair = item
+
                 # loop through the linked list
                 while current_pair is not None:
                     # call self.insert with the key/value of the linked pair
