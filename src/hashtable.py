@@ -53,24 +53,31 @@ class HashTable:
         '''
         # call self._hash_mod(key) and get the index of the insertion
         index = self._hash_mod(key)
+
         # check to see if the value at the index is not None
         if self.storage[index] is not None:
             # create a new LinkedPair class with the key and value
             new_pair = LinkedPair(key, value)
-            # loop through to the end of the linked list and insert the new linked pair
+
+            # store the head of the linked list in a variable
             current_pair = self.storage[index]
+
             # if current_pair key == key simply replace the value with value and return
             if current_pair.key == key:
                 current_pair.value = value
                 return
 
+            # loop through to the end of the linked list and insert the new linked pair
             while current_pair.next is not None:
+                # move to the next pair
                 current_pair = current_pair.next
+
                 # if current_pair key == key simply replace the value with value and return
                 if current_pair.key == key:
                     current_pair.value = value
                     return
 
+            # set the next pair to the new_pair
             current_pair.next = new_pair
         # otherwise, make a LinkedPair with the key, value and set it at that index
         else:
@@ -96,18 +103,24 @@ class HashTable:
         '''
         # call self._hash_mod(key) and get the index of the insertion
         index = self._hash_mod(key)
+
         # check to see if the value at the index is not None
         if self.storage[index] is not None:
-            # loop through the linked list to find the key
+            # let current pair hold the head of the linked list
             current_pair = self.storage[index]
+
+            # loop through the linked list to find the key
             while current_pair is not None:
                 # if the current linked pair key == key return the value
                 if current_pair.key == key:
                     return current_pair.value
+
                 # increment current_pair
                 current_pair = current_pair.next
+
             # return None is a key matching the input key is not found
             return None
+
         # otherwise return None
         else:
             return None
