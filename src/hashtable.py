@@ -91,7 +91,31 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # call self._hash_mod(key) and get the index of the insertion
+        index = self._hash_mod(key)
+
+        # check to see if the value at the index is not None
+        if self.storage[index] is not None:
+            # set the current pair to the head of the linked list
+            current_pair = self.storage[index]
+            # if current pair key == key or there is no next pair, set the current index to current_pair next
+            if current_pair.key == key or current_pair.next is None:
+                self.storage[index] = current_pair.next
+            # otherwise
+            else:
+                # loop through the linked list
+                while current_pair is not None:
+                    # let next pair = current pair next
+                    next_pair = current_pair.next
+                    # if next pair key == key
+                    if next_pair.key == key:
+                        # set current pair next to next pair next
+                        current_pair.next = next_pair.next
+                    # set current pair to current pair next
+                    current_pair = current_pair.next
+        # otherwise, print a warning
+        else:
+            print("No match for that key!")
 
     def retrieve(self, key):
         '''
