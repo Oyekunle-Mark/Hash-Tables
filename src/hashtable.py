@@ -65,7 +65,8 @@ class HashTable:
 
             current_pair.next = new_pair
         # otherwise, make a LinkedPair with the key, value and set it at that index
-        self.storage[index] = LinkedPair(key, value)
+        else:
+            self.storage[index] = LinkedPair(key, value)
 
     def remove(self, key):
         '''
@@ -85,7 +86,23 @@ class HashTable:
 
         Fill this in.
         '''
-        pass
+        # call self._hash_mod(key) and get the index of the insertion
+        index = self._hash_mod(key)
+        # check to see if the value at the index is not None
+        if self.storage[index] is not None:
+            # loop through the linked list to find the key
+            current_pair = self.storage[index]
+            while current_pair is not None:
+                # if the current linked pair key == key return the value
+                if current_pair.key == key:
+                    return current_pair.value
+                # increment current_pair
+                current_pair = current_pair.next
+            # return None is a key matching the input key is not found
+            return None
+        # otherwise return None
+        else:
+            return None
 
     def resize(self):
         '''
