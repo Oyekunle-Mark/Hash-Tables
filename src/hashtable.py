@@ -120,6 +120,7 @@ if __name__ == "__main__":
     ht.insert("line_1", "Tiny hash table")
     ht.insert("line_2", "Filled beyond capacity")
     ht.insert("line_3", "Linked list saves the day!")
+    ht.insert("line_4", "Linked list does not save the day!")
 
     print("")
 
@@ -127,6 +128,7 @@ if __name__ == "__main__":
     print(ht.retrieve("line_1"))
     print(ht.retrieve("line_2"))
     print(ht.retrieve("line_3"))
+    print(ht.retrieve("line_4"))
 
     # Test resizing
     old_capacity = len(ht.storage)
