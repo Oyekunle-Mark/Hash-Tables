@@ -59,9 +59,17 @@ class HashTable:
             new_pair = LinkedPair(key, value)
             # loop through to the end of the linked list and insert the new linked pair
             current_pair = self.storage[index]
+            # if current_pair key == key simply replace the value with value and return
+            if current_pair.key == key:
+                current_pair.value = value
+                return
 
             while current_pair.next is not None:
                 current_pair = current_pair.next
+                # if current_pair key == key simply replace the value with value and return
+                if current_pair.key == key:
+                    current_pair.value = value
+                    return
 
             current_pair.next = new_pair
         # otherwise, make a LinkedPair with the key, value and set it at that index
