@@ -17,7 +17,10 @@ class HashTable:
     '''
 
     def __init__(self, capacity):
-        self.capacity = capacity  # Number of buckets in the hash table
+        # Number of buckets in the hash table
+        self.capacity = capacity
+        # current count of items in the hash table
+        self.items = 0
         self.storage = [None] * capacity
 
     def _hash(self, key):
