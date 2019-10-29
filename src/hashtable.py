@@ -201,6 +201,34 @@ class HashTable:
                     # set current_pair to current_pair next
                     current_pair = current_pair.next
 
+    def shrink(self):
+        '''
+        Halves the capacity of the hash table and
+        rehash all key/value pairs.
+
+        Fill this in.
+        '''
+        # halve the size of self.capacity
+        self.capacity /= 2
+        # let old_storage hold self.storage
+        old_storage = self.storage
+        # point self.storage to a list of capacity self.capacity
+        self.storage = [None] * self.capacity
+
+        # loop through old_storage and rehash every key/value pair
+        for item in old_storage:
+            # if item is not None
+            if item is not None:
+                # set the head of the linked list to current_pair
+                current_pair = item
+
+                # loop through the linked list
+                while current_pair is not None:
+                    # call self.insert with the key/value of the linked pair
+                    self.insert(current_pair.key, current_pair.value)
+                    # set current_pair to current_pair next
+                    current_pair = current_pair.next
+
 
 if __name__ == "__main__":
     ht = HashTable(2)
