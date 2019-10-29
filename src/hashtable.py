@@ -100,6 +100,11 @@ class HashTable:
             # increment the item count
             self.items += 1
 
+        # check to see if the load factor exceeds 0.7
+        if (self.items / len(self.storage)) > 0.7:
+            # call self.resize to double the size of the hash table's storage
+            self.resize()
+
     def remove(self, key):
         '''
         Remove the value stored with the given key.
@@ -182,6 +187,8 @@ class HashTable:
         '''
         # double the size of self.capacity
         self.capacity *= 2
+        # reset the item count to zero
+        self.items = 0
         # let old_storage hold self.storage
         old_storage = self.storage
         # point self.storage to a list of capacity self.capacity
