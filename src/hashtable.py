@@ -34,6 +34,11 @@ class HashTable:
 
         OPTIONAL STRETCH: Research and implement DJB2
         '''
+        # set a variable hash to the prime number 5381
+        # loop through every character in the string
+            # set hash to the sum of  5 bitwise shift left operation on hash plus hash 
+            # plus the character code of the present character
+        # return hash and bitwise and the hexadecimal constant 0xFFFFFFFF
         pass
 
     def _hash_mod(self, key):
