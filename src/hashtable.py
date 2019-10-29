@@ -92,9 +92,13 @@ class HashTable:
 
             # set the next pair to the new_pair
             current_pair.next = new_pair
+            # increment the item count
+            self.items += 1
         # otherwise, make a LinkedPair with the key, value and set it at that index
         else:
             self.storage[index] = LinkedPair(key, value)
+            # increment the item count
+            self.items += 1
 
     def remove(self, key):
         '''
@@ -115,6 +119,8 @@ class HashTable:
             # if current pair key == key or there is no next pair, set the current index to current_pair next
             if current_pair.key == key or current_pair.next is None:
                 self.storage[index] = current_pair.next
+                # decrement the count
+                self.items -= 1
             # otherwise
             else:
                 # loop through the linked list
@@ -126,6 +132,8 @@ class HashTable:
                     if next_pair.key == key:
                         # set current pair next to next pair next
                         current_pair.next = next_pair.next
+                        # decrement the count
+                        self.items -= 1
 
                     # set current pair to current pair next
                     current_pair = current_pair.next
