@@ -146,6 +146,11 @@ class HashTable:
         else:
             print("No match for that key!")
 
+        # check to see if the load factor is under 0.2
+        if (self.items / len(self.storage)) < 0.2:
+            # call self.shrink to halve the size of the hash table's storage
+            self.shrink()
+
     def retrieve(self, key):
         '''
         Retrieve the value stored with the given key.
@@ -216,7 +221,9 @@ class HashTable:
         Fill this in.
         '''
         # halve the size of self.capacity
-        self.capacity /= 2
+        self.capacity = int(self.capacity / 2)
+        # reset the item count to zero
+        self.items = 0
         # let old_storage hold self.storage
         old_storage = self.storage
         # point self.storage to a list of capacity self.capacity
