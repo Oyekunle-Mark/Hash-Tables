@@ -230,10 +230,13 @@ class TestHashTable(unittest.TestCase):
         ht.remove("key-5")
         ht.remove("key-4")
         ht.remove("key-3")
+
+        self.assertTrue(len(ht.storage) == 10)
+
         ht.remove("key-2")
         ht.remove("key-1")
 
-        self.assertTrue(len(ht.storage) == 10)
+        self.assertTrue(len(ht.storage) == 5)
 
         return_value = ht.retrieve("key-0")
         self.assertTrue(return_value == "val-0")
